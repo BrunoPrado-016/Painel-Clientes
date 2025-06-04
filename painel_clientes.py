@@ -27,7 +27,7 @@ if uploaded_file:
         else:
             # Tratamento de datas
             df["Data do Último Contato"] = pd.to_datetime(df["Data do Último Contato"], errors='coerce')
-            df["Dias desde o último contato"] = (datetime.today().date() - df["Data do Último Contato"].dt.date).dt.days
+            df["Dias desde o último contato"] = (pd.Timestamp.today().normalize() - df["Data do Último Contato"]).dt.days
 
             # Filtro por responsável
             st.sidebar.subheader("🔎 Filtros")
